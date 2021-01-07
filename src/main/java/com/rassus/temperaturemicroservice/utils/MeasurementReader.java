@@ -3,12 +3,10 @@ package com.rassus.temperaturemicroservice.utils;
 import com.rassus.temperaturemicroservice.domain.entities.Measurement;
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Slf4j
 public class MeasurementReader {
@@ -42,9 +40,7 @@ public class MeasurementReader {
         String line = null;
         List<String> lines = new ArrayList<>();
 
-        // TODO add a proper path
-        try (BufferedReader reader = new BufferedReader(new FileReader(new File("")))) {
-            // skip header row
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("data.csv"))))) {
             reader.readLine();
 
             for (int i = 0; i <= 99; i++) {
