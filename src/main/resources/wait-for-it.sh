@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # Use this script to test if a given TCP host/port are available
-echo SRBIJA
 WAITFORIT_cmdname=${0##*/}
 
 echoerr() { if [[ $WAITFORIT_QUIET -ne 1 ]]; then echo "$@" 1>&2; fi }
@@ -67,6 +66,10 @@ wait_for_wrapper()
     return $WAITFORIT_RESULT
 }
 
+# ./wait-for-it.sh eureka-server:8761 -- java -jar /usr/app/temperature--microservice-0.0.1-SNAPSHOT.jar
+# 1 = eureka-server:8761
+# 2 = '--'
+# 3 = "java -jar /usr/app/temperature--microservice-0.0.1-SNAPSHOT.jar"
 # process arguments
 while [[ $# -gt 0 ]]
 do
